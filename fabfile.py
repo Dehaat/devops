@@ -127,6 +127,7 @@ def setup(ctx, branch='master'):
             cleanup_old_releases(host)
             upload_templates(host)
             migrate_and_create_symlink(host)
+            collect_static(host)
             restart_services(host)
         print(colored(success, 'green'))
     except Exception as e:
@@ -142,6 +143,7 @@ def deploy(ctx, branch='master'):
             update_env(host)
             cleanup_old_releases(host)
             migrate_and_create_symlink(host)
+            collect_static(host)
             restart_services(host)
             print('successfully deployed {} to host {}'.format(branch, host))
         print(colored(success, 'green'))
@@ -388,6 +390,13 @@ def migrate_and_create_symlink(host):
     with connection(host) as conn:
         migrate_database(conn)
         create_symlink(conn, env.release_dir, env.current_version_dir)
+
+
+def collect_static(host):
+    with connection(host) as conn:
+        with virtualenv(conn) as conn:
+            with project(conn) as conn:
+                conn.run('python manage.py collectstatic --noinput')
 
 
 def get_templates():
