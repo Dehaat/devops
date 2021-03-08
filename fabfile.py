@@ -388,7 +388,8 @@ def migrate_database(conn):
 
 def migrate_and_create_symlink(host):
     with connection(host) as conn:
-        migrate_database(conn)
+        if env.run_migrations != False:
+            migrate_database(conn)
         create_symlink(conn, env.release_dir, env.current_version_dir)
 
 

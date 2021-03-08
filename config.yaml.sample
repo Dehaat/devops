@@ -10,6 +10,7 @@ production:
   domains_nginx: 'aeros.api.agrevolution.in'
   aws_access_key_id: 'xxx'
   aws_secret_access_key: 'xxx'
+  run_migrations: False # defaults to True
   bastion:
     user: 'dkdocs'
     host: 'bastion.agrevolution.in'
@@ -25,6 +26,7 @@ staging:
   domains_nginx: '13.127.83.212'
   aws_access_key_id: 'xxx'
   aws_secret_access_key: 'xxx'
+  run_migrations: False # defaults to True
   bastion:
     user: 'dkdocs'
     host: 'bastion.dehaatagri.com'
