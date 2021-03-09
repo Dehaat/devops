@@ -258,7 +258,6 @@ def setup_release(host, branch):
             conn.run("mkdir -p logs")
             install_python_requirements(conn)
         upload_template_and_reload(conn, 'gunicorn_conf')
-        upload_template_and_reload(conn, 'nginx')
 
 
 def update_env(host):
