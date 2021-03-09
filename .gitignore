@@ -5,3 +5,8 @@
 .coverage
 .idea
 config.yaml
+
+env/
+venv/
+.env/
+.venv/
