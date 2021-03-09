@@ -6,3 +6,4 @@ workers = multiprocessing.cpu_count() * 2 + 1
 errorlog = "/home/%(user)s/logs/%(proj_name)s_error.log"
 loglevel = "error"
 proc_name = "%(proj_name)s"
+timeout = 120
